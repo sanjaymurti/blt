@@ -1,0 +1,31 @@
+pre.debug_dump {
+  margin: 5px;
+  margin-top: 40px;
+  border: 1px solid #ccc;
+  background: #ddd;
+  padding: 4px;
+  font-size: 12px;
+}
+
+#navigation h1 {
+  color: white;
+  font-family: 'jaf-facitweb';
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+}
+
+.nav-button {
+  border: 2px solid white;
+  color: white;
+  display: inline;
+  padding: 3px 9px;
+  margin-top: 8px;
+  margin-right: 15px;
+  border-radius: 3px;
+  float: right;
+  text-decoration: none;
+  font-family: 'jaf-facitweb';
+  font-size: 13px;
+  text-transform: uppercase;
+}

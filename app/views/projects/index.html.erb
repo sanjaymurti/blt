@@ -1,0 +1,55 @@
+<% provide(:title, ' | All Projects') %>
+
+  <div class="projects" id="summary">
+    <h2><%= Date::MONTHNAMES[Date.today.month] %></h2>
+    <h3><%= Date.today.day %></h3>
+  </div>
+
+  <% @projects.each do |project| %>
+    <div class="projects" id="project-<%= project.id %>">
+      <div class="color" style="background: <%= project.color %>"></div>
+      <div class="project-title">
+        <h2><%= project.name %></h2>
+        <h3><%= project.client %>&ndash;<%= project.matter %></h3>
+        <%= link_to image_tag("trash.png", :class => 'delete-icon'), project, method: :delete,
+                                  data: { confirm: "Do you really want to delete this project?" } %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="clearfix"></div>
+
+
+
+  <div id="add-project-form">
+    <% if @project.errors.any? %>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li>* <%= msg %></li>
+      <% end %>
+    <% end %>
+
+    <%= form_for(@project) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :client %>
+      <%= f.text_field :client %>
+
+      <%= f.label :matter %>
+      <%= f.text_field :matter %>
+
+      <%= f.label :color %>
+      <%= f.color_field :color %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+
+      <%= f.submit "Add New Project", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+
+  <div id="modal-overlay">
+  </div>

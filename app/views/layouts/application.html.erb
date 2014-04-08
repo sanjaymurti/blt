@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blt</title>
+  <title>BLT <%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script type="text/javascript" src="//use.typekit.net/wre7tol.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+  <div id="navigation">
+  <a class="nav-button" href="#" onClick="return false;">New Project</a>
+  <h1>BLT</h1>
+  </div>
+
 <%= yield %>
+
+<%= debug(params) if Rails.env.development? %>
 
 </body>
 </html>
