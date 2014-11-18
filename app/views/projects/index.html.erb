@@ -21,6 +21,7 @@
 
 
 
+
   <div id="add-project-form">
     <% if @project.errors.any? %>
       <% @project.errors.full_messages.each do |msg| %>
@@ -53,3 +54,11 @@
 
   <div id="modal-overlay">
   </div>
+
+
+   <% if @err %>
+    <script>
+      $('#add-project-form').show();
+      $('#modal-overlay').show();
+    </script>
+  <% end %>

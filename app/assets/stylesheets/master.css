@@ -9,7 +9,7 @@ pre.debug_dump {
 
 #navigation h1 {
   color: white;
-  font-family: 'jaf-facitweb';
+  font-family: 'Helvetica';
   margin: 0;
   padding: 0;
   padding-left: 10px;
@@ -25,7 +25,7 @@ pre.debug_dump {
   border-radius: 3px;
   float: right;
   text-decoration: none;
-  font-family: 'jaf-facitweb';
+  font-family: 'Helvetica';
   font-size: 13px;
   text-transform: uppercase;
 }

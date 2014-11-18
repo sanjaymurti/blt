@@ -7,21 +7,23 @@ body {
   height: 45px;
 }
 
+#navigation h1 {
+  line-height: 45px;
+}
+
 .projects {
   background: white;
   float: left;
-  margin: 8px 5px;
+  margin: 8px 8px;
   padding: 10px;
-  padding-top: 20px;
   width: 250px;
   height: 250px;
   border: 1px solid #ccc;
-  font-family: "jaf-facitweb";
+  font-family: "Helvetica";
   position: relative;
 }
 
 .projects h2 {
-  margin: 0;
   font-size: 14px;
 }
 
