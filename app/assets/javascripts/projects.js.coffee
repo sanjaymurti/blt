@@ -32,5 +32,14 @@ ready = ->
       dataType: "json"
       _method : "delete"
 
+  $('.hour-item').click ->
+    $('#hour-info-' + this.id.split("-").splice(-1)).show()
+    $('#modal-overlay-clear').show()
+
+  $('#modal-overlay-clear').click ->
+    $('.hour-info').hide()
+    $('#modal-overlay-clear').hide()
+  
+
 $(document).ready(ready)
 $(document).on('page:load', ready)

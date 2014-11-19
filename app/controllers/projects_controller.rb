@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @project = Project.new
+    @billablehours = BillableHour.where(start: Time.now.midnight..Time.now.midnight + 1.day)
   end
 
   def create

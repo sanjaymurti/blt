@@ -1,4 +1,6 @@
 Blt::Application.routes.draw do
+  resources :billable_hours
+
   resources :tasks
 
   # The priority is based upon order of creation: first created -> highest priority.

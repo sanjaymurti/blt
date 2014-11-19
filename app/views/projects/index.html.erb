@@ -7,7 +7,40 @@
   <div class="projects" id="summary">
     <h2><%= Date::MONTHNAMES[Date.today.month] %></h2>
     <h3><%= Date.today.day %></h3>
+    <div id="timekeeping">
+      <div id="time0">0</div>
+      <div id="time24">24</div> 
+      <% @billablehours.each do |hour| %>
+        <div class="hour-item" id="hour-item-<%= hour.id %>" style="width:<%=hour.total_time_in_tenths%>px; background: <%= hour.project.color %>; left: <%= hour.starting_tenth + 15 %>px;">&nbsp;</div>
+      <% end %>
+    </div>
+
+
+     <% @billablehours.each do |hour| %>
+
+        <div class="hour-info" id="hour-info-<%= hour.id %>">
+          <%= form_for(hour) do |f| %>
+            <ul>
+            <li><%= f.label "Start:" %> <%= f.time_field :start %></li>
+            <li><%= f.label "End: " %> <%= f.time_field :end %></li>
+            <li><%= f.text_area :description %></li>
+            <div style="text-align: right; padding-right: 6px;">
+              <%= f.submit "Save" %>
+              <input type="button" value="Delete">
+            </div>
+            </ul>
+          <% end %>
+        </div>
+
+      <% end %>
+
+
+
   </div>
+
+ 
+
+
 
   <% @projects.each do |project| %>
     <div class="projects" id="project-<%= project.id %>">
@@ -63,6 +96,10 @@
 
   <div id="modal-overlay">
   </div>
+
+  <div id="modal-overlay-clear">
+  </div>
+
 
 
    <% if @err %>
