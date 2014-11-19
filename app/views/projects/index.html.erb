@@ -1,5 +1,9 @@
 <% provide(:title, ' | All Projects') %>
 
+<% content_for :navbutton do %>
+<a class="nav-button" href="#" onClick="return false;">New</a>
+<% end %>
+
   <div class="projects" id="summary">
     <h2><%= Date::MONTHNAMES[Date.today.month] %></h2>
     <h3><%= Date.today.day %></h3>
@@ -9,10 +13,15 @@
     <div class="projects" id="project-<%= project.id %>">
       <div class="color" style="background: <%= project.color %>"></div>
       <div class="project-title">
-        <h2><%= project.name %></h2>
+        <h2><a href="/projects/<%= project.id %>"><%= project.name %></a></h2>
         <h3><%= project.client %>&ndash;<%= project.matter %></h3>
         <%= link_to image_tag("trash.png", :class => 'delete-icon'), project, method: :delete,
                                   data: { confirm: "Do you really want to delete this project?" } %>
+      </div>
+      <div class="clearfix"></div>
+
+      <div class="tasks">
+        <%= pluralize(project.tasks.count, 'task') %> to do
       </div>
     </div>
   <% end %>

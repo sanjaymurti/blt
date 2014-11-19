@@ -29,3 +29,8 @@ pre.debug_dump {
   font-size: 13px;
   text-transform: uppercase;
 }
+
+h1 a {
+  color: white;
+  text-decoration: none;
+}

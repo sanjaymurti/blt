@@ -67,3 +67,52 @@
 .delete-icon:hover {
   opacity: 1;
 }
+
+#project-page h2 {
+  margin-left: 8px;
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+#project-page h3 {
+  margin-top: 8px;
+}
+
+#project-page p {
+    margin-left: 15px;
+    margin-top: 0;
+}
+
+#task-list {
+  float: left;
+  margin: 8px;
+  margin-top: 0px;
+  padding: 0 10px;
+  width: 250px;
+  border: 1px solid #ccc;
+  font-family: "Helvetica";
+  position: relative;
+  background: white;
+}
+
+#task-list li {
+  margin-top: 4px;
+}
+
+#add-new {
+  display: block;
+  color: gray;
+  margin: 10px;
+  text-decoration: none;
+  font-size: 24px;
+  text-align: right;
+  color: #19B5FE;
+}
+
+textarea#task_task {
+  vertical-align: top;  
+}
+
+.checkbox {
+  float: right;
+}

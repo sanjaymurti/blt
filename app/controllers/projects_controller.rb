@@ -22,6 +22,12 @@ class ProjectsController < ApplicationController
     redirect_to projects_path
   end
 
+  def show
+    @project = Project.find(params[:id])
+    @tasks = @project.tasks
+    @task = Task.new
+  end
+
 
   private
 
