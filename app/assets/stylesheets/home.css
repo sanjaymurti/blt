@@ -136,6 +136,7 @@ body {
   position: absolute;
   height: 10px;
   top: 6px;
+  display: block;
 }
 
 .hour-info {

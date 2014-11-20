@@ -24,11 +24,19 @@ class BillableHoursController < ApplicationController
   # POST /billable_hours
   # POST /billable_hours.json
   def create
+    open_hour = BillableHour.where(end: DateTime.strptime('03/05/2010 14:25:00', '%d/%m/%Y %H:%M:%S'))
+    unless open_hour.empty?
+      open_hour.first.end = Time.zone.now.at_beginning_of_minute
+      open_hour.first.save
+    end
+
     @billable_hour = BillableHour.new(billable_hour_params)
+    @billable_hour.start = Time.zone.now.at_beginning_of_minute
+    @billable_hour.end = DateTime.strptime('03/05/2010 14:25:00', '%d/%m/%Y %H:%M:%S')
 
     respond_to do |format|
       if @billable_hour.save
-        format.html { redirect_to @billable_hour, notice: 'Billable hour was successfully created.' }
+        format.html { redirect_to projects_path, notice: 'Billable hour was successfully created.' }
         format.json { render action: 'show', status: :created, location: @billable_hour }
       else
         format.html { render action: 'new' }

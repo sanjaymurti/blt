@@ -11,7 +11,7 @@
       <div id="time0">0</div>
       <div id="time24">24</div> 
       <% @billablehours.each do |hour| %>
-        <div class="hour-item" id="hour-item-<%= hour.id %>" style="width:<%=hour.total_time_in_tenths%>px; background: <%= hour.project.color %>; left: <%= hour.starting_tenth + 15 %>px;">&nbsp;</div>
+        <div class="hour-item" id="hour-item-<%= hour.id %>" style="width:<%=hour.total_time_in_tenths%>px; background: <%= hour.project.color %>; left: <%= hour.starting_tenth + 15 %>px;"></div>
       <% end %>
     </div>
 
