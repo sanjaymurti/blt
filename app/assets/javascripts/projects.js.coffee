@@ -40,6 +40,8 @@ ready = ->
     $('.hour-info').hide()
     $('#modal-overlay-clear').hide()
   
+  $('a.color').click ->
+    $('#project-billable-' + this.id).find('form')[0].submit()
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

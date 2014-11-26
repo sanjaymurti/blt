@@ -21,6 +21,33 @@ class BillableHoursController < ApplicationController
   def edit
   end
 
+  # GET /billable_hours/:year/:month/:day
+  def day 
+    month = params[:month].to_s
+    day = params[:day].to_s
+    year = params[:year].to_s
+    date = day + "/" + month + "/" + year
+    midnight = " 0:00:00 Eastern Time (US & Canada)"
+    end_of_day = " 23:59:59 Eastern Time (US & Canada)"
+    day_needed = DateTime.strptime(date + midnight,'%d/%m/%Y %H:%M:%S %Z')
+    end_of_day_needed = DateTime.strptime(date + end_of_day,'%d/%m/%Y %H:%M:%S %Z')
+    @billable_hours = BillableHour.where(start: day_needed..end_of_day_needed)
+  end
+
+
+
+
+  # PATCH /billable_hours/close
+  def close
+    open_hour = BillableHour.where(end: DateTime.strptime('03/05/2010 14:25:00', '%d/%m/%Y %H:%M:%S'))
+    unless open_hour.empty?
+      open_hour.first.end = Time.zone.now.at_beginning_of_minute
+      open_hour.first.update(billable_hour_params)
+      open_hour.first.save
+    end
+    redirect_to projects_path
+  end
+
   # POST /billable_hours
   # POST /billable_hours.json
   def create
@@ -50,7 +77,7 @@ class BillableHoursController < ApplicationController
   def update
     respond_to do |format|
       if @billable_hour.update(billable_hour_params)
-        format.html { redirect_to @billable_hour, notice: 'Billable hour was successfully updated.' }
+        format.html { redirect_to projects_path, notice: 'Billable hour was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

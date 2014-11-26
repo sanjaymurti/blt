@@ -4,12 +4,38 @@
 <a class="nav-button" href="#" onClick="return false;">New</a>
 <% end %>
 
+<div id="current-project">
+  <% if @currentbillable %>
+    
+    <div id="working-on">
+      Currently working on <span style="font-weight: bold; color: <%= @currentbillable.project.color %>;"><%= @currentbillable.project.name %></span>.<br \>
+      <a href="#" onclick="$('#bill-description').show(); $('#working-on').hide(); return false;">Stop Timer</a>
+    </div>
+
+    <div id="bill-description">
+      <%= form_for @currentbillable, :url => 'close-open-hours' do |f| %>
+        <label>What have you done?</label>
+        <%= f.text_area :description %><br \>
+        <a id="savebut" href="#" onclick="$('#bill-description').find('form')[0].submit();">Save</a>
+        <a id="canbut" href="#" onclick="$('#bill-description'.hide(); $('#working-on').show(); return false;">Cancel</a>
+        <a id="delbut" href="#" onclick="$('#bill-description'.hide(); $('#working-on').show(); return false;">Delete</a>
+      <% end %>
+    </div>
+
+  <% else %>
+    You are not working on anything.
+  <% end %>
+</div>
+
+
   <div class="projects" id="summary">
     <h2><%= Date::MONTHNAMES[Date.today.month] %></h2>
     <h3><%= Date.today.day %></h3>
     <div id="timekeeping">
       <div id="time0">0</div>
       <div id="time24">24</div> 
+      <a href="/billable_hours/<%= Date.today.year %>/<%= Date.today.month %>/<%= Date.today.day %>" id="timebar"></a>
+
       <% @billablehours.each do |hour| %>
         <div class="hour-item" id="hour-item-<%= hour.id %>" style="width:<%=hour.total_time_in_tenths%>px; background: <%= hour.project.color %>; left: <%= hour.starting_tenth + 15 %>px;"></div>
       <% end %>
@@ -44,7 +70,20 @@
 
   <% @projects.each do |project| %>
     <div class="projects" id="project-<%= project.id %>">
-      <div class="color" style="background: <%= project.color %>"></div>
+      
+      <% if !@currentbillable %>
+      <a id="<%= project.id %>" href="#" onclick="return false;" class="color" style="background: <%= project.color %>"></a>
+      <% else %>
+      <div id="<%= project.id %>" class="color" style="background: <%= project.color %>"></div>
+      <% end %>
+
+        <div id="project-billable-<%= project.id %>">
+          <%= form_for(@billablehour) do |f| %>
+            <%= f.hidden_field :project_id, :value => project.id %>
+          <% end %>
+        </div>
+
+
       <div class="project-title">
         <h2><a href="/projects/<%= project.id %>"><%= project.name %></a></h2>
         <h3><%= project.client %>&ndash;<%= project.matter %></h3>
@@ -98,6 +137,11 @@
   </div>
 
   <div id="modal-overlay-clear">
+  </div>
+
+
+
+  <div id="add-description">
   </div>
 
 

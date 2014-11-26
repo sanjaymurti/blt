@@ -1,3 +1,23 @@
 // Place all the styles related to the BillableHours controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.billable-card {
+  background: white;
+  float: left;
+  margin: 8px 8px;
+  padding: 10px;
+  width: 250px;
+  height: 70px;
+  border: 1px solid #ccc;
+  font-family: "Helvetica";
+  position: relative;
+}
+
+.project-color {
+  width: 10px;
+  height: 90px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

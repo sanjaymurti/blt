@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @billablehours = BillableHour.where(start: Time.now.midnight..Time.now.midnight + 1.day)
     @billablehour = BillableHour.new
+    @currentbillable = BillableHour.where(end: DateTime.strptime('03/05/2010 14:25:00', '%d/%m/%Y %H:%M:%S')).first
   end
 
   def create

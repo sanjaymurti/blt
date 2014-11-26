@@ -1,0 +1,53 @@
+
+<% @billable_hours.each do | b | %>
+
+<div class="billable-card">
+	<div class="project-color" style="background: <%= b.project.color %>"></div>
+	<%= b.project.name %>
+</div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Project</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @billable_hours.each do |billable_hour| %>
+      <tr>
+        <td><%= billable_hour.description %></td>
+        <td><%= billable_hour.start %></td>
+        <td><%= billable_hour.end %></td>
+        <td><%= billable_hour.project %></td>
+        <td><%= link_to 'Show', billable_hour %></td>
+        <td><%= link_to 'Edit', edit_billable_hour_path(billable_hour) %></td>
+        <td><%= link_to 'Destroy', billable_hour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

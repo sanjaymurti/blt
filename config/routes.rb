@@ -11,6 +11,12 @@ Blt::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'projects#index'
+  
+  patch 'close-open-hours' => 'billable_hours#close'
+
+  get '/billable_hours/:year/:month/:day' => 'billable_hours#day',
+    :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ },
+    :as => "billable_hours_date"
 
 
   # Example of regular route:
