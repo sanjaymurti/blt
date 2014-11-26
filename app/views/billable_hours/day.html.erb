@@ -3,8 +3,24 @@
 
 <div class="billable-card">
 	<div class="project-color" style="background: <%= b.project.color %>"></div>
-	<%= b.project.name %>
-</div>
+	
+
+        <div class="card-info" id="hour-info-<%= b.id %>">
+          <%= form_for(b) do |f| %>
+            <%= f.text_area :description %>
+
+            <li><%= f.label "Start:" %> <%= f.time_field :start %></li>
+            <li><%= f.label "End: " %> <%= f.time_field :end %></li>
+            <div style="text-align: right; padding-right: 6px;">
+              <%= f.submit "Save" %>
+              <input type="button" value="Delete">
+            </div>
+            </ul>
+          <% end %>
+        </div>
+
+
+	</div>
 
 <% end %>
 
